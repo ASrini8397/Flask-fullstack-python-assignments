@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>You Logged In</title>
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <h1>Rock On {{session['user_name']}} !!!!</h1>
+        
+                
+                    <a href="/loggedin" class="btn btn-info navbar-brand">TV Shows</a>
+                
+                    <a href="/logout" class="btn btn-info navbar-brand">Log Out</a>
+                
+        </nav>
+
+        
+
+                    <h1>Your shows!</h1>
+                    <div class= "row card col-8 bg-dark text-light mx-auto">
+                {% if show %}
+                        {% for myshow in show %}
+                        <div>
+                            <h1>{{myshow.title}}</h1> 
+                        </div>
+                        <div class="mb-4 form-control">
+                        {{myshow.network}} 
+                        </div>
+                        
+                        <div class="mb-4 form-control">
+                        {{myshow.date}}
+                            </div>
+                        <div class="mb-4">
+                        {{myshow.description}}
+                        
+                        </div>
+                                
+                        {% endfor %}
+                    {% endif %}  
+                    <div class="mb-4 form-control">
+        {% for user in poster %}
+                        <p>Poster: {{user.first_name}} {{user.last_name}}</p>
+                    {% endfor %}
+                    </div>
+                    </div>
+    </div>
+</body>
+</html>
